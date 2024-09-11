@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+# import pprint
 
 # Read the image
 image = cv2.imread("Image1.jpg")
@@ -16,8 +17,25 @@ densityArray = densityArray[:-1]
 # y = 21   # Replace with your desired y coordinate
 
 # pixel_value = image[y, x]
-grayscale_image = np.mean(image, axis=2)
+# grayscaleImage = np.mean(image, axis=2)
+
+# Read the grayscale image
+grayscaleImage = cv2.imread("Image1.jpg", cv2.IMREAD_GRAYSCALE)
+
+# Normalize the grayscale image to the range [0, 28] (corresponding to the index in density_array)
+scaledImage = np.interp(grayscaleImage, (0, 255), (0, len(densityArray) - 1))
+
+# Convert the scaled grayscale values to integers (indices for density_array)
+ascii_indices = scaledImage.astype(int)
+
+# Map each grayscale value to its corresponding ASCII character
+ascii_image = densityArray[ascii_indices]
+
+# Join the ASCII characters row-wise to create the final ASCII art
+ascii_art = "\n".join("".join(row) for row in ascii_image)
 
 # print(grayscale_image)
-print(densityArray[28])
-
+# pprint(grayscaleImage)
+# pprint.pprint(grayscaleImage, width=80)
+with open("ascii_art.txt", "w") as f:
+    f.write(ascii_art)
