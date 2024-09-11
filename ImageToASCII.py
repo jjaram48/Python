@@ -4,6 +4,9 @@ import numpy as np
 # Read the image
 image = cv2.imread("Image1.jpg")
 
+# Load the array of ASCII
+densityArray = ['@', '#', '%', '8', '&', 'B', 'M', 'W', 'X', 'Z', 'o', 'a', 'h', 'k', 'b', 'd', 'p', 'q', 'w', 'm', '*', '+', '=', '~', '-', ':', '.', ',', ' ']
+
 # Access pixel values
 # For pixel at (x, y)
 # x = 21  # Replace with your desired x coordinate
@@ -12,4 +15,6 @@ image = cv2.imread("Image1.jpg")
 # pixel_value = image[y, x]
 grayscale_image = np.mean(image, axis=2)
 
-print(grayscale_image)
+# print(grayscale_image)
+print(densityArray[0])
+
