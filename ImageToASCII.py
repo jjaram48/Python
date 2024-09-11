@@ -5,7 +5,8 @@ import numpy as np
 image = cv2.imread("Image1.jpg")
 
 # Load the array of ASCII
-densityArray = ['@', '#', '%', '8', '&', 'B', 'M', 'W', 'X', 'Z', 'o', 'a', 'h', 'k', 'b', 'd', 'p', 'q', 'w', 'm', '*', '+', '=', '~', '-', ':', '.', ',', ' ']
+# densityArray = ['@', '#', '%', '8', '&', 'B', 'M', 'W', 'X', 'Z', 'o', 'a', 'h', 'k', 'b', 'd', 'p', 'q', 'w', 'm', '*', '+', '=', '~', '-', ':', '.', ',', ' ']
+densityArray = np.array(list("@#%8&BMWXZohkbdpqwm*+=~-:.''\""))
 
 # Access pixel values
 # For pixel at (x, y)
@@ -16,5 +17,5 @@ densityArray = ['@', '#', '%', '8', '&', 'B', 'M', 'W', 'X', 'Z', 'o', 'a', 'h',
 grayscale_image = np.mean(image, axis=2)
 
 # print(grayscale_image)
-print(densityArray[0])
+print(densityArray[5])
 
